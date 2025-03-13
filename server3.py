@@ -42,5 +42,5 @@ class Server:
             thread.start()
 
 if __name__ == "__main__":
-    server = Server("0.0.0.0", 5000)
+    server = Server("10.0.3.2", 5000)
     server.start()
