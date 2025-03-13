@@ -1,0 +1,25 @@
+Step 1:
+	Create the script that the system process will run (you can have it anywhere just remember where it is)
+Step 2:
+	Create inital service file. Make sure you follow the correct format so that systemd will read it properly.
+	Place the file in /etc/systemd/system/#nameofservice#
+Step 3: 
+	Reload systemd so that it can see the newly created service file: sudo systemctl daemon-reload
+Step 4: 
+	Enable the new servie so that it runs automatically on boot: sudo systemctl enable #nameofservice#
+Step 5:
+	Start the service using: sudo systemctl start #nameoffservice#
+
+You can disable the service with the disable command
+
+You can stop the service with the stop command
+
+In the case you change the location of the file make sure to do a daemon-reload and a restart command
+
+You can view any logs created by the service using sudo journalctl -u #nameofservice#
+
+
+
+I have the script located in my home directory as /home/amsebastian12/sequential-stressor.sh
+
+The service itself is in /etc/systemd/system/sequential_stressors.service
