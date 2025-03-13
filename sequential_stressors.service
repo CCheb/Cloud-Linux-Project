@@ -1,0 +1,17 @@
+[Unit]
+Description=Sequential Stressor Daemon
+After=network.target
+
+[Service]
+ExecStart=/home/amsebastian12/sequential-stressor.sh
+Restart=always
+User=root
+Group=root
+WorkingDirectory=/root
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sequential_stressors
+
+[Install]
+WantedBy=multi-user.target
+
