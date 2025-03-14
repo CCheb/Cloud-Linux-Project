@@ -27,6 +27,7 @@ def get_metrics():
         metrics = fetch_data(server)
         if metrics:
             all_metrics[server] = metrics
+            print(f"Metrics from {server}: {metrics}")  # Output metrics
     return jsonify(all_metrics)
 
 
