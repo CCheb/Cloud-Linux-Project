@@ -3,33 +3,51 @@
 <head>
     <title>Server Monitoring Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1>Server Monitoring Dashboard</h1>
-    <button onclick="fetchMetrics()">Refresh Metrics</button>
-    <div id="metrics"></div>
-    <canvas id="cpuChart"></canvas>
-    
     <script>
+        const thresholds = { cpu: 75, memory: 75, disk: 75 };
+
+        <!-- Get metrics and update charts and thresholds-->
         async function fetchMetrics() {
             const response = await fetch('/metrics');
             const data = await response.json();
             document.getElementById("metrics").innerText = JSON.stringify(data, null, 2);
-            updateChart(data);
+            updateCharts(data);
+            checkThresholds(data);
         }
-        
-        function updateChart(data) {
-            const ctx = document.getElementById('cpuChart').getContext('2d');
+
+        async function fetchHistoricalData() {
+            const response = await fetch('/historical-metrics');
+            const data = await response.json();
+            updateHistoricalCharts(data);
+        }
+
+        function updateCharts(data) {
             const labels = Object.keys(data);
             const cpuData = labels.map(server => data[server].cpu);
-            
+            const memoryData = labels.map(server => data[server].memory);
+            const diskData = labels.map(server => data[server].disk);
+
+            createChart('cpuChart', 'CPU Usage (%)', labels, cpuData);
+            createChart('memoryChart', 'Memory Usage (%)', labels, memoryData);
+            createChart('diskChart', 'Disk Usage (%)', labels, diskData);
+        }
+
+        function updateHistoricalCharts(data) {
+            const labels = data.timestamps;
+            createChart('cpuHistoricalChart', 'Historical CPU Usage (%)', labels, data.cpu);
+            createChart('memoryHistoricalChart', 'Historical Memory Usage (%)', labels, data.memory);
+            createChart('diskHistoricalChart', 'Historical Disk Usage (%)', labels, data.disk);
+        }
+
+        function createChart(elementId, label, labels, data) {
+            const ctx = document.getElementById(elementId).getContext('2d');
             new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'CPU Usage (%)',
-                        data: cpuData,
+                        label: label,
+                        data: data,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -45,6 +63,36 @@
                 }
             });
         }
+
+        function checkThresholds(data) {
+            let alertMessage = "";
+            for (const server in data) {
+                for (const metric in thresholds) {
+                    if (data[server][metric] >= thresholds[metric]) {
+                        alertMessage += `Warning: ${server} ${metric} usage is ${data[server][metric]}%, exceeding threshold (${thresholds[metric]}%)\n`;
+                    }
+                }
+            }
+            if (alertMessage) {
+                alert(alertMessage);
+            }
+        }
     </script>
+</head>
+<body>
+    <h1>Server Monitoring Dashboard</h1>
+    <button onclick="fetchMetrics()">Refresh Metrics</button>
+    <button onclick="fetchHistoricalData()">Load Historical Data</button>
+    <div id="metrics"></div>
+    
+    <h2>Real-Time Metrics</h2>
+    <canvas id="cpuChart"></canvas>
+    <canvas id="memoryChart"></canvas>
+    <canvas id="diskChart"></canvas>
+    
+    <h2>Historical Metrics</h2>
+    <canvas id="cpuHistoricalChart"></canvas>
+    <canvas id="memoryHistoricalChart"></canvas>
+    <canvas id="diskHistoricalChart"></canvas>
 </body>
 </html>
