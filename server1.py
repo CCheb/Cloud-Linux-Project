@@ -62,4 +62,4 @@ def serve_historical_metrics():
 if __name__ == "__main__":
     import threading
     threading.Thread(target=write_to_pipe, daemon=True).start()
-    app.run(debug=True, host='10.0.4.2', port=5000)  # Runs HTTP server and restricts access to client only
+    app.run(debug=True, host='0.0.0.0', port=5000)  # Runs HTTP server and restricts access to client only
