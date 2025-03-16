@@ -13,15 +13,15 @@ run_stressor() {
     case $stressor in
         "memory")
             echo "Running memory stress for $timeout seconds"
-            stress-ng --vm 1 --vm-bytes 1G --timeout ${timeout}s
+            stress-ng --vm 1 --vm-bytes 500M --timeout ${timeout}s
             ;;
         "cpu")
             echo "Running CPU stress for $timeout seconds"
-            stress-ng --cpu 4 --timeout ${timeout}s
+            stress-ng --cpu 2 --timeout ${timeout}s
             ;;
         "io")
             echo "Running I/O stress for $timeout seconds"
-            stress-ng --hdd 1 --aggressive --timeout ${timeout}s
+            stress-ng --hdd 1 --timeout ${timeout}s
             ;;
         "filesystem")
             echo "Running filesystem stress for $timeout seconds"
