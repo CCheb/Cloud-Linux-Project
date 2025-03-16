@@ -3,14 +3,14 @@ Description=Sequential Stressor Daemon
 After=network.target
 
 [Service]
-ExecStart=/home/amsebastian12/sequential-stressor.sh
+ExecStart=/home/amsebastian12/sequential-stressor.sh  # Location of the bash script
 Restart=always
-User=root
+User=root  # Service will belong to root
 Group=root
 WorkingDirectory=/root
-StandardOutput=journal
+StandardOutput=journal  # Any output made by the script will be sent to the journal. Use journalctl to see it
 StandardError=journal
-SyslogIdentifier=sequential_stressors
+SyslogIdentifier=sequential_stressors  # Service tag
 
 [Install]
 WantedBy=multi-user.target
