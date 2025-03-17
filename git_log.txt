@@ -1,0 +1,120 @@
+commit 7f70e0098b4d9e95887ec43285faa4dbb7f17744
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Sun Mar 16 16:10:12 2025 -0400
+
+    Added comments to sequential_stressors.service
+
+commit 597dab3b7bf4ac0dd52f73224e7c3463319c9ff9
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Sun Mar 16 16:05:40 2025 -0400
+
+    Updates sequential-stressor.sh to be a bit less demanding
+
+commit 2f0758fb2a471b9c831ba20eb02758c081ae9c24
+Author: AntonioRocher <arocher.hernandez@gmail.com>
+Date:   Sun Mar 16 14:47:11 2025 -0400
+
+    App.run host change
+    
+    Server was not finding client, so we made it so server finds all addresses
+
+commit f3824157e43e0dd09751b43456196ca43a61b5e7
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Sun Mar 16 03:05:23 2025 -0400
+
+    Updated README To-Do List
+    
+    Please read this to understand what is left to do.
+
+commit fe7777c4d24febeaec39d93e5de07b424cb41e21
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Sun Mar 16 02:58:21 2025 -0400
+
+    This is a big update: Refer to README for next steps
+    
+    - Added named pipes to client/server codes
+    - Handled log files
+    - Updated dashboard to graphically display information and logs
+    - Added support for establishing thresholds that give alerts when reached(default 75% usage)
+    - Added security to allow only client access to server information
+    - Added code comments to make it more readable
+
+commit 6a93c17641c8e85d03e8dc124ddec7824935564f
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Fri Mar 14 12:37:48 2025 -0400
+
+    Added Dashboard
+    
+    Co-Authored-By: AARocher <89544076+AARocher@users.noreply.github.com>
+    Co-Authored-By: CCheb <151454253+CCheb@users.noreply.github.com>
+
+commit 0f35e80bd6699a7e7782d319b5e5d72811497934
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Fri Mar 14 12:21:12 2025 -0400
+
+    Updated Client.py
+    
+    Co-Authored-By: AARocher <89544076+AARocher@users.noreply.github.com>
+    Co-Authored-By: CCheb <151454253+CCheb@users.noreply.github.com>
+
+commit 489b871d5d0237051479479312c5400dd0005879
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Thu Mar 13 15:42:14 2025 -0400
+
+    Updated IP
+    
+    Added in the corresponding IP's for each server and the client. Please add each server code to it's own respective server IP. If the IP is wrong, change it at the bottom of each respective server code and the top of the client code.
+    
+    Co-Authored-By: AARocher <89544076+AARocher@users.noreply.github.com>
+
+commit f19845bc8edfc13bed23886ca07c0ab79d0d8686
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Thu Mar 13 15:34:11 2025 -0400
+
+    TestClientandServer
+    
+    Can you add the server code to each of the servers and keep it running in the background. Then add the client code to the API/Host server and run it (make sure it is after all 3 server codes are running) to test if they communicate properly. if they do, it should display live data about all of the metrics. I also already added the IP's based on what we spoke about yesterday, so the code will be ready.
+    
+    Co-Authored-By: AARocher <89544076+AARocher@users.noreply.github.com>
+
+commit 7e0eb4e27875aabc982db022414a88428c3f47ab
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Thu Mar 13 12:25:42 2025 -0400
+
+    Little notes describing the process on creating a sys daemon
+
+commit 6061551c927177069ce860fe2ebdfd6bb48a7ac0
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Thu Mar 13 12:24:38 2025 -0400
+
+    system daemon that runs sequential-stressor.sh
+
+commit ab335fc97334ff7635fff9758529a0c51c38e788
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Thu Mar 13 12:23:53 2025 -0400
+
+    Bash file that alternates on different stress-ng classes in a random fashion
+
+commit 2137081f36e33cca71d9bdf8c6d6594f478e77fb
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Thu Mar 13 12:23:07 2025 -0400
+
+    Added bash script that uses stress-ng to alternate different stress classes in a sequential fashion
+
+commit 4e9b1270b90b784b1e2a75df1600f1798291c16c
+Author: DChaney2173 <145802390+DChaney2173@users.noreply.github.com>
+Date:   Wed Mar 12 12:05:35 2025 -0400
+
+    Testing
+
+commit 329d4abe87d1ef2285cb37eaa2b4c330bb8f39dc
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Tue Mar 11 10:40:07 2025 -0400
+
+    Update README.md
+
+commit 97f7b4652b52b25407ed01fd06ff37627c22b682
+Author: CCheb <151454253+CCheb@users.noreply.github.com>
+Date:   Tue Mar 11 10:39:39 2025 -0400
+
+    Initial commit
